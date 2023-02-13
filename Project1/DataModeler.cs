@@ -1,32 +1,28 @@
-﻿using Newtonsoft.Json;
-using System.Xml.Serialization;
-using System.Reflection;
+﻿using System.Reflection;
+using Newtonsoft.Json;
 using CsvHelper;
 using System.Globalization;
+using System.Xml.Serialization;
 
-
-namespace Project1_Scrabble
+namespace Project1
 {
     internal class DataModeler
     {
-        const string JSON_FILE_LOCATION = "./Data/Canadacities-JSON.json";
-        const string CSV_FILE_LOCATION = "./Data/Canadacities.csv";
-        const string XML_FILE_LOCATION = "./Data/Canadacities-XML.xml";
-        
         // 2b)
         internal delegate List<CityInfo> ParseDelegate(string file_type);
         // 2a)
-        internal static List<CityInfo> ParseJSON()
+        internal List<CityInfo> ParseJSON()
         {
-            using (StreamReader r = new StreamReader(JSON_FILE_LOCATION))
+            Assembly program = Assembly.GetExecutingAssembly();
+            string resourceName = program.GetManifestResourceNames().Single(str => str.EndsWith("Canadacities-JSON.json"));
+            using (StreamReader r = new StreamReader(program.GetManifestResourceStream(resourceName)!))
             {
                 string json = r.ReadToEnd();
-                List<CityInfo> items = JsonConvert.DeserializeObject<List<CityInfo>>(json);
+                List<CityInfo> items = JsonConvert.DeserializeObject<List<CityInfo>>(json)!;
                 return items;
             }
-
         }
-        internal static List<CityInfo> ParseCSV()
+        internal List<CityInfo> ParseCSV()
         {
             Assembly program = Assembly.GetExecutingAssembly();
             string resourceName = program.GetManifestResourceNames().Single(str => str.EndsWith("Canadacities.csv"));
@@ -44,30 +40,33 @@ namespace Project1_Scrabble
         }
         internal static List<CityInfo> ParseXML()
         {
-            using (StreamReader r = new StreamReader(XML_FILE_LOCATION))
+            Assembly program = Assembly.GetExecutingAssembly();
+            string resourceName = program.GetManifestResourceNames().Single(str => str.EndsWith("Canadacities-XML.xml"));
+            using (TextReader r = new StreamReader(program.GetManifestResourceStream(resourceName)!))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<CityInfo>), new XmlRootAttribute("CanadaCities"));
-                List<CityInfo> items = (List<CityInfo>)serializer.Deserialize(r);
+                List<CityInfo> items = (List<CityInfo>)serializer.Deserialize(r)!;
                 return items;
             }
         }
+
         //2c)
-        internal static List<CityInfo> ParseFILE(string file_type)
+        internal List<CityInfo> ParseFILE(string file_type)
         {
             
             if (file_type == "JSON")
             {
-                //Console.WriteLine("PARSING JSON");
+                Console.WriteLine("PARSING JSON");
                 return ParseJSON();
             }
             else if (file_type == "XML")
             {
-                //Console.WriteLine("PARSING XML");
+                Console.WriteLine("PARSING XML");
                 return ParseXML();
             }
             else
             {
-                //Console.WriteLine("PARSING CSV");
+                Console.WriteLine("PARSING CSV");
                 return ParseCSV();
             }
 

@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Project1_Scrabble
+namespace Project1
 {
     class Program
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project1_Scrabble
+namespace Project1
 {
     /// <summary>
     /// Dictionary generic type called CityCatalogue

@@ -8,6 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Canadacities-JSON.json" />
+    <None Remove="Data\Canadacities-XML.xml" />
+    <None Remove="Data\Canadacities.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Canadacities-JSON.json" />
+    <EmbeddedResource Include="Data\Canadacities-XML.xml" />
+    <EmbeddedResource Include="Data\Canadacities.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
   </ItemGroup>

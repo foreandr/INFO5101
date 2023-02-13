@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project1_Scrabble
+namespace Project1
 {
     public class UserInterface
     {
@@ -131,11 +131,17 @@ namespace Project1_Scrabble
         {
             Console.WriteLine("");
             Console.WriteLine("1) Display City Information");
-            Console.WriteLine("2) Display Province Cities");
-            Console.WriteLine("3) Calculate Province Population");
-            Console.WriteLine("4) Order Provinces by Population");
-            Console.WriteLine("5) Distance Between Cities");
-            Console.WriteLine("6) Restart Program and Choose anoything File or File Type to Query");
+            Console.WriteLine("2) Display Largest Population City");
+            Console.WriteLine("3) Display Smallest Population City");
+            Console.WriteLine("4) Compare the Populations of Two Cities");
+            Console.WriteLine("5) Calculate the Distance Between Two Cities");
+            Console.WriteLine("6) Calculate the Distance To the Provincial Capital");
+            Console.WriteLine("7) Display Province Population");
+            Console.WriteLine("8) List Cities of Province");
+            Console.WriteLine("9) Rank Provinces by Population");
+            Console.WriteLine("10) Rank Provinces by Number of Cities");
+            Console.WriteLine("11) Get Capital City for Province");
+            Console.WriteLine("-/- Restart Program and Choose Another File Type to Query");
             Console.WriteLine("Select a data query routine from the list above");
         }
         public List<string> CreateQueryOptionsList()
@@ -147,6 +153,11 @@ namespace Project1_Scrabble
             options.Add("4");
             options.Add("5");
             options.Add("6");
+            options.Add("7");
+            options.Add("8");
+            options.Add("9");
+            options.Add("10");
+            options.Add("11");
             options.Add("restart");
             options.Add("exit");
             return options;
