@@ -62,6 +62,17 @@ namespace Project1_Scrabble
 
             return TryStringtoIntCast(choice);
         }
+
+        public string GetCityChoice()
+        {
+            Console.WriteLine("Type in a Canadian City:");
+            return CustomInput<string>();
+        }
+        public string GetProvinceChoice()
+        {
+            Console.WriteLine("Type in a Canadian Province:");
+            return CustomInput<string>();
+        }
         public int TryStringtoIntCast(string myString)
         {
             try
@@ -122,7 +133,7 @@ namespace Project1_Scrabble
             Console.WriteLine("1) Display City Information");
             Console.WriteLine("2) Display Province Cities");
             Console.WriteLine("3) Calculate Province Population");
-            Console.WriteLine("4) Match Cities Population");
+            Console.WriteLine("4) Order Provinces by Population");
             Console.WriteLine("5) Distance Between Cities");
             Console.WriteLine("6) Restart Program and Choose anoything File or File Type to Query");
             Console.WriteLine("Select a data query routine from the list above");
@@ -156,5 +167,6 @@ namespace Project1_Scrabble
 
             return TryStringtoIntCast(choice);
         }
+        
     }
 }

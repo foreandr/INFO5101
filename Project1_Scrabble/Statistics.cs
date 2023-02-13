@@ -10,6 +10,7 @@ namespace Project1_Scrabble
     {
         public string file_name;
         public int file_type;
+        UserInterface ui = new UserInterface();
         public CityCatalogue cityCatalogue = new CityCatalogue();
 
         /*Constructor (file name, file type). The user must specify the file name,
@@ -297,6 +298,38 @@ namespace Project1_Scrabble
                 city = "Whitehorse";
             }
             return city;
+        }
+        public void executeWithQueryChoice(int choice)
+        {
+            if (choice == 1)
+            {
+                string city = ui.GetCityChoice();
+                DisplayCityInformation(city);
+            }
+            else if (choice == 2)
+            {
+                string prov = ui.GetProvinceChoice();
+                DisplayProvinceCities(prov);
+            }
+            else if (choice == 3)
+            {
+                string prov = ui.GetProvinceChoice();
+                DisplayProvincePopulation(prov);
+            }else if ( choice == 4)
+            {
+                RankProvincesByPopulation();
+            }else if (choice == 5)
+            {
+                string city1 = ui.GetCityChoice();
+                string city2 = ui.GetCityChoice();
+                CalculateDistanceBetweenCities(city1, city2);
+
+            }
+            else if (choice == 6)
+            {
+                ui.RESTART();
+            }
+
         }
     }
     public class OrderByPopulationDesc : IComparer<CityInfo> 

@@ -16,9 +16,16 @@ namespace Project1_Scrabble
             int fileType = ui.GetFileChoice();
 
             ui.CatalogueInfo(fileType);
-            int query_choice = ui.getQueryChoice();
-            Console.WriteLine("QUERY CHOICE " + query_choice);
             Statistics stats = new Statistics("Canadiancities", fileType);
+
+            while (true)
+            {
+                int query_choice = ui.getQueryChoice();
+                stats.executeWithQueryChoice(query_choice);
+            }
+            
+            // Console.WriteLine("QUERY CHOICE " + query_choice);
+            
             
             // presumabely if they click 1,2,3 then they have specified they want canadian cities?
             // stats.PrintAll();
