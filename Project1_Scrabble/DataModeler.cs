@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Xml.Serialization;
+using System.Reflection;
+using CsvHelper;
+using System.Globalization;
+
 
 namespace Project1_Scrabble
 {
@@ -28,23 +28,28 @@ namespace Project1_Scrabble
         }
         internal static List<CityInfo> ParseCSV()
         {
-            using (StreamReader r = new StreamReader(CSV_FILE_LOCATION))
+            Assembly program = Assembly.GetExecutingAssembly();
+            string resourceName = program.GetManifestResourceNames().Single(str => str.EndsWith("Canadacities.csv"));
+            using (StreamReader r = new StreamReader(program.GetManifestResourceStream(resourceName)!))
+            using (CsvReader csvReader = new CsvReader(r, CultureInfo.InvariantCulture))
             {
-                string json = r.ReadToEnd();
-                List<CityInfo> items = JsonConvert.DeserializeObject<List<CityInfo>>(json);
-                return items;
+                var items = csvReader.GetRecords<CityInfo>();
+                List<CityInfo> output = new();
+                foreach (CityInfo item in items)
+                {
+                    output.Add(item);
+                }
+                return output;
             }
-
         }
         internal static List<CityInfo> ParseXML()
         {
             using (StreamReader r = new StreamReader(XML_FILE_LOCATION))
             {
-                string json = r.ReadToEnd();
-                List<CityInfo> items = JsonConvert.DeserializeObject<List<CityInfo>>(json);
+                XmlSerializer serializer = new XmlSerializer(typeof(List<CityInfo>), new XmlRootAttribute("CanadaCities"));
+                List<CityInfo> items = (List<CityInfo>)serializer.Deserialize(r);
                 return items;
             }
-
         }
         //2c)
         internal static List<CityInfo> ParseFILE(string file_type)
@@ -52,17 +57,17 @@ namespace Project1_Scrabble
             
             if (file_type == "JSON")
             {
-                Console.WriteLine("PARSING JSON");
+                //Console.WriteLine("PARSING JSON");
                 return ParseJSON();
             }
             else if (file_type == "XML")
             {
-                Console.WriteLine("PARSING XML");
+                //Console.WriteLine("PARSING XML");
                 return ParseXML();
             }
             else
             {
-                Console.WriteLine("PARSING CSV");
+                //Console.WriteLine("PARSING CSV");
                 return ParseCSV();
             }
 

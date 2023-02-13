@@ -8,7 +8,8 @@ namespace Project1_Scrabble
     {
         static void Main()
         {
-            
+
+            /*
             UserInterface ui = new UserInterface();
             ui.PrintTitle();
             ui.FileOptions();
@@ -17,20 +18,24 @@ namespace Project1_Scrabble
             ui.CatalogueInfo(fileType);
             int query_choice = ui.getQueryChoice();
             Console.WriteLine("QUERY CHOICE " + query_choice);
-                   
-            // presumabely if they click 1,2,3 then they have specified they want canadian cities?
             Statistics stats = new Statistics("Canadiancities", fileType);
+            */
+            // presumabely if they click 1,2,3 then they have specified they want canadian cities?
+
+            Statistics stats = new Statistics("Canadiancities", 1);
             // stats.PrintAll();
-            stats.DisplayCityInformation("Selkirk");
+            //stats.DisplayCityInformation("Selkirk");
+            //stats.DisplayLargestPopulationCity("Manitoba");
+            //stats.DisplaySmallestPopulationCity("Manitoba");
+            //stats.DisplayProvincePopulation("Manitoba");
+            //stats.RankProvincesByPopulation();
+            //stats.DisplayProvinceCities("Manitoba");
+            // stats.RankProvincesByPopulation();
+            // stats.getCapital("Manitoba");
 
         }
 
-
-
-
         //Create a non-generic class called CityInfo that will hold information about the city. 
-
-
 
     }
 }
