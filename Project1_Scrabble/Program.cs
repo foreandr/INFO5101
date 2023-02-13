@@ -9,7 +9,7 @@ namespace Project1_Scrabble
         static void Main()
         {
 
-            /*
+            
             UserInterface ui = new UserInterface();
             ui.PrintTitle();
             ui.FileOptions();
@@ -19,10 +19,8 @@ namespace Project1_Scrabble
             int query_choice = ui.getQueryChoice();
             Console.WriteLine("QUERY CHOICE " + query_choice);
             Statistics stats = new Statistics("Canadiancities", fileType);
-            */
+            
             // presumabely if they click 1,2,3 then they have specified they want canadian cities?
-
-            Statistics stats = new Statistics("Canadiancities", 1);
             // stats.PrintAll();
             //stats.DisplayCityInformation("Selkirk");
             //stats.DisplayLargestPopulationCity("Manitoba");

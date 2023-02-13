@@ -150,12 +150,24 @@ namespace Project1_Scrabble
         {
             // ???????????????????????????????
         }
-        public void CalculateDistanceBetweenCities(string city)
+        public double distanceFormula(double lat1, double lon1,  double lat2, double lon2)
         {
-
+            return Math.Acos(Math.Sin(lat1) * Math.Sin(lat2) + Math.Cos(lat1) * Math.Cos(lat2) * Math.Cos(lon2 - lon1)) * 6371;
         }
-        public void CalculateDistanceToCapital()
+        public void CalculateDistanceBetweenCities(string city1, string city2) {
+
+            CityInfo new_city = cityCatalogue.GetValue<CityInfo>(city1);
+            CityInfo new_city2 = cityCatalogue.GetValue<CityInfo>(city2);
+            Console.WriteLine($"Distance between {city1} and {city2} is: {distanceFormula(new_city.lat, new_city.lng, new_city2.lat, new_city2.lng)}");
+        }
+        public void CalculateDistanceToCapital(string city1)
         {
+            CityInfo new_city = cityCatalogue.GetValue<CityInfo>(city1);
+            string province = new_city.GetProvince();
+            string capital = GetCapitalCity(province);
+
+            CityInfo new_city2 = cityCatalogue.GetValue<CityInfo>(capital);
+            Console.WriteLine($"Distance between {city1} and {capital} is: {distanceFormula(new_city.lat, new_city.lng, new_city2.lat, new_city2.lng)}");
 
         }
         // PROVINCE RELATED
