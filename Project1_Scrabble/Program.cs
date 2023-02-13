@@ -20,7 +20,8 @@ namespace Project1_Scrabble
                    
             // presumabely if they click 1,2,3 then they have specified they want canadian cities?
             Statistics stats = new Statistics("Canadiancities", fileType);
-            stats.PrintAll();
+            // stats.PrintAll();
+            stats.DisplayCityInformation("Selkirk");
 
         }
 

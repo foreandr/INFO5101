@@ -68,7 +68,8 @@ namespace Project1_Scrabble
         // CITY RELATED
         public void DisplayCityInformation(string city)
         {
-
+            CityInfo new_city = cityCatalogue.GetValue<CityInfo>(city);
+            Console.WriteLine("HERE! " + new_city.ToString());
         }
         public void DisplayLargestPopulationCity(string city)
         {
