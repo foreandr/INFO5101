@@ -156,7 +156,10 @@ namespace Project1
         }
         public void CalculateDistanceToCapital(string city1)
         {
-            CityInfo new_city = cityCatalogue.GetValue<CityInfo>(city1)!;
+            //Console.WriteLine("CITY TEST:" + city1);
+            CityInfo new_city = cityCatalogue.GetValue<CityInfo>(city1)!; // seems to be an issue here
+            //Console.WriteLine("CITY TEST2:" + new_city.ToString());
+
             string province = new_city.GetProvince();
             string capital = GetCapitalCity(province);
 
