@@ -33,7 +33,6 @@ namespace Project1
             Console.WriteLine("2) canadiancities-JSON");
             Console.WriteLine("3) canadiancities-XML");
             Console.WriteLine("Select an option from the list above(e.g. 1, 2, 3) ");
-
         }
         public List<string> CreateOptionsList()
         {
@@ -65,12 +64,12 @@ namespace Project1
 
         public string GetCityChoice()
         {
-            Console.WriteLine("Type in a Canadian City:");
+            Console.Write("Type in a Canadian City:");
             return CustomInput<string>();
         }
         public string GetProvinceChoice()
         {
-            Console.WriteLine("Type in a Canadian Province:");
+            Console.Write("Type in a Canadian Province:");
             return CustomInput<string>();
         }
         public int TryStringtoIntCast(string myString)

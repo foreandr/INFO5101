@@ -257,17 +257,17 @@ namespace Project1
         {
             switch (choice)
             {
-                case 1: DisplayCityInformation(ui.CustomInput<string>()); break;
-                case 2: DisplayLargestPopulationCity(ui.CustomInput<string>()); break;
-                case 3: DisplaySmallestPopulationCity(ui.CustomInput<string>()); break;
-                case 4: CompareCitiesPopluation(ui.CustomInput<string>(), ui.CustomInput<string>()); break;
-                case 5: CalculateDistanceBetweenCities(ui.CustomInput<string>(), ui.CustomInput<string>()); break;
-                case 6: CalculateDistanceToCapital(ui.CustomInput<string>()); break;
-                case 7: DisplayProvincePopulation(ui.CustomInput<string>()); break;
-                case 8: DisplayProvinceCities(ui.CustomInput<string>()); break;
+                case 1: DisplayCityInformation(ui.GetCityChoice()); break;
+                case 2: DisplayLargestPopulationCity(ui.GetProvinceChoice()); break;
+                case 3: DisplaySmallestPopulationCity(ui.GetProvinceChoice()); break;
+                case 4: CompareCitiesPopluation(ui.GetCityChoice(), ui.GetCityChoice()); break;
+                case 5: CalculateDistanceBetweenCities(ui.GetCityChoice(), ui.GetCityChoice()); break;
+                case 6: CalculateDistanceToCapital(ui.GetCityChoice()); break;
+                case 7: DisplayProvincePopulation(ui.GetProvinceChoice()); break;
+                case 8: DisplayProvinceCities(ui.GetProvinceChoice()); break;
                 case 9: RankProvincesByPopulation(); break;
                 case 10: RankProvincesByCities(); break;
-                case 11: GetCapitalCity(ui.CustomInput<string>()); break;
+                case 11: GetCapitalCity(ui.GetProvinceChoice()); break;
             }
         }
     }
